@@ -1,0 +1,7 @@
+
+squid:S1192"\Define a constant instead of duplicating this literal "Greetings from Spring Boot!" 3 times.(ä Òèùÿÿÿÿ8Ü°ÚÐ….
+rsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(„“üÎþÿÿÿÿ8àÿÚÐ….
+vsquid:UselessImportCheck"FRemove this unused import 'org.springframework.stereotype.Repository'.(¦ýÍýüÿÿÿÿ8—£ÓÐ….
+_squid:UselessImportCheck"/Remove this unused import 'java.util.Optional'.(¨˜ëÝüÿÿÿÿ8—£ÓÐ….
+}squid:UselessImportCheck"RRemove this unused import 'org.springframework.data.jpa.repository.JpaRepository'.(À™‡“8—£ÓÐ….
+rsquid:S00100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(èòÒ¾øÿÿÿÿ8ˆ¬ÛÐ….
