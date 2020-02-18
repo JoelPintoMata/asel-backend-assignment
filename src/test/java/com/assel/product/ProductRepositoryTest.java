@@ -10,7 +10,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.time.Instant;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
@@ -22,14 +21,14 @@ class ProductRepositoryTest {
     @Test
     void findAll() {
         Product product = new Product();
-        product.setId(Long.valueOf(UUID.randomUUID().toString()));
+        product.setId(1L);
         product.setName("name");
         product.setCurrentPrice("123.456");
         product.setLastUpdate(Instant.now().toString());
         productRepository.save(product);
 
         Product otherProduct = new Product();
-        otherProduct.setId(Long.valueOf(UUID.randomUUID().toString()));
+        otherProduct.setId(2L);
         otherProduct.setName("other name");
         otherProduct.setCurrentPrice("234.567");
         otherProduct.setLastUpdate(Instant.now().toString());
@@ -52,7 +51,7 @@ class ProductRepositoryTest {
 
     @Test
     void save() {
-        Long id = Long.valueOf(UUID.randomUUID().toString());
+        Long id = 1L;
 
         Product product = new Product();
         product.setId(id);
@@ -72,7 +71,7 @@ class ProductRepositoryTest {
 
     @Test
     void findById() {
-        Long id = Long.valueOf(UUID.randomUUID().toString());
+        Long id = 1L;
 
         Product product = new Product();
         product.setId(id);
