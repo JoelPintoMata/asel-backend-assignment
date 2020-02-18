@@ -4,9 +4,6 @@ import com.assel.product.Product;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-
-import java.util.Optional;
 
 @SpringBootApplication
 public interface Application extends JpaRepository<Product, Long> {
