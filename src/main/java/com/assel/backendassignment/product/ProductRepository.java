@@ -1,4 +1,4 @@
-package com.assel.product;
+package com.assel.backendassignment.product;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

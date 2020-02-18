@@ -1,4 +1,4 @@
-package com.assel.product;
+package com.assel.backendassignment.product;
 
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;

@@ -1,4 +1,4 @@
-package com.assel.product;
+package com.assel.backendassignment.product;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
