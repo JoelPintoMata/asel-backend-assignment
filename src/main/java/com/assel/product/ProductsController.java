@@ -1,26 +1,33 @@
 package com.assel.product;
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.Optional;
+import java.util.List;
 
 @RestController
 public class ProductsController {
 
+    private ProductService productService;
+
+    ProductsController(ProductService productService) {
+        this.productService = productService;
+    }
+
     @GetMapping("/api/products")
-    public String getProducts() {
-        return "Greetings from Spring Boot!";
+    public List<Product> getProducts() {
+        return productService.getProducts();
     }
 
     @PutMapping("/api/products")
-    public String PutProducts() {
+    public String putProducts() {
         return "Greetings from Spring Boot!";
     }
 
     @PostMapping("/api/products")
-    public String PostProducts() {
+    public String postProducts() {
         return "Greetings from Spring Boot!";
     }
 
