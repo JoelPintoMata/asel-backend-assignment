@@ -6,6 +6,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+/**
+ * Product service implementation
+ */
 @Service
 public class ProductServiceImpl implements ProductService {
 

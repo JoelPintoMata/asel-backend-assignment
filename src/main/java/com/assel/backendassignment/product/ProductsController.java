@@ -38,8 +38,15 @@ public class ProductsController {
     }
 
     @PutMapping("/api/products/{id}")
-    public String putProducts() {
-        return "Greetings from Spring Boot!";
+    public String putProducts(@PathVariable Long id,
+                              @RequestBody Product product) {
+        try {
+            product.setId(id);
+            productService.save(product);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, String.format("Error while saving the product: %s", e.getMessage()));
+        }
+        throw new ResponseStatusException(HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/api/products")

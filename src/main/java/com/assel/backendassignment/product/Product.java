@@ -2,6 +2,9 @@ package com.assel.backendassignment.product;
 
 import javax.persistence.*;
 
+/**
+ * Product entity
+ */
 @Entity
 @Table(name = "product")
 public class Product {
