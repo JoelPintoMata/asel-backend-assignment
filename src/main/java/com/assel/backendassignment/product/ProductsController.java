@@ -12,7 +12,7 @@ public class ProductsController {
 
     private ProductService productService;
 
-    ProductsController(ProductService productService) {
+    public ProductsController(ProductService productService) {
         this.productService = productService;
     }
 
@@ -30,5 +30,4 @@ public class ProductsController {
     public String postProducts() {
         return "Greetings from Spring Boot!";
     }
-
 }
