@@ -1,21 +1,13 @@
 package com.assel.backendassignment.product;
 
-import javax.persistence.*;
-
 /**
- * Product entity
+ * Product DTO
  */
-@Entity
-@Table(name = "product")
-public class Product {
+public class ProductDTO {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private long id;
     private String name;
-    @Column(name = "current_price")
     private String currentPrice;
-    @Column(name = "last_update")
     private String lastUpdate;
 
     public long getId() {
@@ -52,7 +44,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return "Product [id=" + id + ", name=" + name + ", current price=" + currentPrice + ", last updat=" + lastUpdate
+        return "ProductDTO [id=" + id + ", name=" + name + ", current price=" + currentPrice + ", last updat=" + lastUpdate
                 + "]";
     }
 }
