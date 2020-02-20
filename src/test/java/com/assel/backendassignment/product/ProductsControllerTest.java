@@ -32,7 +32,7 @@ class ProductsControllerTest {
 
     @org.junit.jupiter.api.Test
     public void getProducts() throws Exception {
-        List<Product> productList = new ArrayList<Product>();
+        List<Product> productList = new ArrayList<>();
         Product product1 = new Product();
         product1.setName("name");
         product1.setCurrentPrice("123.456");

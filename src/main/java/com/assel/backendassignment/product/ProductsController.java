@@ -38,24 +38,26 @@ public class ProductsController {
     }
 
     @PutMapping("/api/products/{id}")
-    public String putProducts(@PathVariable Long id,
-                              @RequestBody Product product) {
+    public Product putProducts(@PathVariable Long id,
+                               @RequestBody ProductDTO productDTO) {
+        Product product;
         try {
-            product.setId(id);
-            productService.save(product);
+            productDTO.setId(id);
+            product = productService.save(productDTO);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, String.format("Error while saving the product: %s", e.getMessage()));
         }
-        throw new ResponseStatusException(HttpStatus.ACCEPTED);
+        return product;
     }
 
     @PostMapping("/api/products")
-    public void postProducts(@RequestBody Product product) {
+    public Product postProducts(@RequestBody ProductDTO productDTO) {
+        Product product;
         try {
-            productService.save(product);
+            product = productService.save(productDTO);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, String.format("Error while saving the product: %s", e.getMessage()));
         }
-        throw new ResponseStatusException(HttpStatus.ACCEPTED);
+        return product;
     }
 }
