@@ -21,7 +21,7 @@ public interface ProductService {
      * @param product the product
      * @return the persisted product
      */
-    Product save(Product product);
+    Product save(ProductDTO product);
 
     /**
      * Retrieves a product

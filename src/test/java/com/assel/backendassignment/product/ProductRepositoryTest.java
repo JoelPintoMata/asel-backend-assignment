@@ -46,7 +46,7 @@ class ProductRepositoryTest {
     }
 
     @Test
-    public void saveTest() {
+    public void givenNewProduct_whenInsert_thenPersist() {
         Product product = new Product();
         product.setName("name");
         product.setCurrentPrice("123.456");
@@ -58,6 +58,30 @@ class ProductRepositoryTest {
         Product otherProduct = optionalOtherProduct.get();
         Assert.assertEquals(product.getId(), otherProduct.getId());
         Assert.assertEquals(product.getName(), otherProduct.getName());
+        Assert.assertEquals(product.getCurrentPrice(), otherProduct.getCurrentPrice());
+        Assert.assertEquals(product.getLastUpdate(), otherProduct.getLastUpdate());
+    }
+
+    @Test
+    public void givenExistingProduct_whenUpdate_thenUpdate() {
+        Product product = new Product();
+        product.setName("name");
+        product.setCurrentPrice("123.456");
+        product.setLastUpdate(Instant.now().toString());
+        product = productRepository.save(product);
+
+        List<Product> productList = productRepository.findAll();
+        Assert.assertNotNull(productList);
+        Assert.assertEquals(1, productList.size());
+
+        Optional<Product> optionalOtherProduct = productRepository.findById(product.getId());
+
+        Product otherProduct = optionalOtherProduct.get();
+        otherProduct.setName("updated name");
+        otherProduct = productRepository.save(otherProduct);
+
+        Assert.assertEquals(product.getId(), otherProduct.getId());
+        Assert.assertEquals(product.getName(), "updated name");
         Assert.assertEquals(product.getCurrentPrice(), otherProduct.getCurrentPrice());
         Assert.assertEquals(product.getLastUpdate(), otherProduct.getLastUpdate());
     }
