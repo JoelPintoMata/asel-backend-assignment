@@ -1,6 +1,7 @@
 package com.assel.backendassignment.product;
 
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -19,7 +20,7 @@ public class ProductsController {
     @GetMapping("/api/products")
     @ResponseBody
     public List<Product> getProducts() {
-        return productService.getProducts();
+        return productService.findAll();
     }
 
     @GetMapping("/api/product/{id}")
@@ -27,7 +28,7 @@ public class ProductsController {
     public Product getProduct(@PathVariable Long id) {
         Optional<Product> product;
         try {
-            product = productService.getProduct(id);
+            product = productService.findById(id);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, String.format("Error while get the product: %s", e.getMessage()));
         }
@@ -38,6 +39,7 @@ public class ProductsController {
     }
 
     @PutMapping("/api/products/{id}")
+    @ResponseBody
     public Product putProducts(@PathVariable Long id,
                                @RequestBody ProductDTO productDTO) {
         Product product;
@@ -51,13 +53,14 @@ public class ProductsController {
     }
 
     @PostMapping("/api/products")
-    public Product postProducts(@RequestBody ProductDTO productDTO) {
+    @ResponseBody
+    public ResponseEntity<Product> postProduct(@RequestBody ProductDTO productDTO) {
         Product product;
         try {
             product = productService.save(productDTO);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, String.format("Error while saving the product: %s", e.getMessage()));
         }
-        return product;
+        return new ResponseEntity<>(product, HttpStatus.CREATED);
     }
 }
