@@ -13,7 +13,7 @@ public interface ProductService {
      *
      * @return a list of products
      */
-    List<Product> getProducts();
+    List<Product> findAll();
 
     /**
      * Persists a product
@@ -29,5 +29,5 @@ public interface ProductService {
      * @param id a product id
      * @return the product with a given id
      */
-    Optional<Product> getProduct(Long id);
+    Optional<Product> findById(Long id);
 }
