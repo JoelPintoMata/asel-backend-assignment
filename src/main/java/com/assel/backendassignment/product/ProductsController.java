@@ -40,8 +40,8 @@ public class ProductsController {
 
     @PutMapping("/api/products/{id}")
     @ResponseBody
-    public Product putProducts(@PathVariable Long id,
-                               @RequestBody ProductDTO productDTO) {
+    public ResponseEntity<Product> putProduct(@PathVariable Long id,
+                                              @RequestBody ProductDTO productDTO) {
         Product product;
         try {
             productDTO.setId(id);
@@ -49,7 +49,7 @@ public class ProductsController {
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, String.format("Error while saving the product: %s", e.getMessage()));
         }
-        return product;
+        return new ResponseEntity<>(product, HttpStatus.ACCEPTED);
     }
 
     @PostMapping("/api/products")
