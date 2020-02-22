@@ -1,6 +1,7 @@
 package com.assel.backendassignment.product;
 
 import org.junit.Assert;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,11 @@ class ProductRepositoryTest {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @BeforeEach
+    public void beforeEach() {
+        productRepository.deleteAll();
+    }
 
     @Test
     public void findAllTest() {
