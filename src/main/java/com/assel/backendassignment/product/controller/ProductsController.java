@@ -1,5 +1,8 @@
-package com.assel.backendassignment.product;
+package com.assel.backendassignment.product.controller;
 
+import com.assel.backendassignment.product.dto.ProductDTO;
+import com.assel.backendassignment.product.model.Product;
+import com.assel.backendassignment.product.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

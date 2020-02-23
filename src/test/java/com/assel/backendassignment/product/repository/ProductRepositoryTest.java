@@ -1,5 +1,6 @@
-package com.assel.backendassignment.product;
+package com.assel.backendassignment.product.repository;
 
+import com.assel.backendassignment.product.model.Product;
 import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

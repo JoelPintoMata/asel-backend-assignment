@@ -1,5 +1,8 @@
-package com.assel.backendassignment.product;
+package com.assel.backendassignment.product.controller;
 
+import com.assel.backendassignment.product.dto.ProductDTO;
+import com.assel.backendassignment.product.model.Product;
+import com.assel.backendassignment.product.service.ProductServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.runner.RunWith;
 import org.mockito.Mockito;

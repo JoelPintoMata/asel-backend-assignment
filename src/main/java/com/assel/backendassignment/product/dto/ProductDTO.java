@@ -1,4 +1,4 @@
-package com.assel.backendassignment.product;
+package com.assel.backendassignment.product.dto;
 
 /**
  * Product DTO

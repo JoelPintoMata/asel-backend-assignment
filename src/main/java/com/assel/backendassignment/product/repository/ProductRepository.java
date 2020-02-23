@@ -1,12 +1,17 @@
-package com.assel.backendassignment.product;
+package com.assel.backendassignment.product.repository;
+
+import com.assel.backendassignment.product.model.Product;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 import java.util.Optional;
 
 /**
- * Product service
+ * Product repository
  */
-public interface ProductService {
+@Repository
+public interface ProductRepository extends JpaRepository<Product, Long> {
 
     /**
      * Retrieves all products
@@ -16,12 +21,17 @@ public interface ProductService {
     List<Product> findAll();
 
     /**
+     * Deletes all products
+     */
+    void deleteAll();
+
+    /**
      * Persists a product
      *
      * @param product the product
      * @return the persisted product
      */
-    Product save(ProductDTO product);
+    Product save(Product product);
 
     /**
      * Retrieves a product

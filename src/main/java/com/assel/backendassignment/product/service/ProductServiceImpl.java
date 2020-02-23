@@ -1,5 +1,8 @@
-package com.assel.backendassignment.product;
+package com.assel.backendassignment.product.service;
 
+import com.assel.backendassignment.product.dto.ProductDTO;
+import com.assel.backendassignment.product.model.Product;
+import com.assel.backendassignment.product.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
