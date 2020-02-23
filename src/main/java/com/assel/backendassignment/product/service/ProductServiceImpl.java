@@ -1,11 +1,13 @@
 package com.assel.backendassignment.product.service;
 
 import com.assel.backendassignment.product.dto.ProductDTO;
-import com.assel.backendassignment.product.model.Product;
+import com.assel.backendassignment.product.entity.Product;
 import com.assel.backendassignment.product.repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityExistsException;
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -28,7 +30,23 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product save(ProductDTO productDTO) {
+    public void deleteAll() {
+        productRepository.deleteAll();
+    }
+
+    @Override
+    public Product saveUpdate(ProductDTO productDTO) {
+        if (!this.findById(productDTO.getId()).isPresent()) {
+            throw new EntityNotFoundException("A product with this id does not exist");
+        }
+        return productRepository.save(this.productDTOtoEntity(productDTO));
+    }
+
+    @Override
+    public Product saveInsert(ProductDTO productDTO) {
+        if (this.findById(productDTO.getId()).isPresent()) {
+            throw new EntityExistsException("A product with this id already exists");
+        }
         return productRepository.save(this.productDTOtoEntity(productDTO));
     }
 

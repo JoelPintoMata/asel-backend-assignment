@@ -1,13 +1,15 @@
 package com.assel.backendassignment.product.controller;
 
 import com.assel.backendassignment.product.dto.ProductDTO;
-import com.assel.backendassignment.product.model.Product;
+import com.assel.backendassignment.product.entity.Product;
 import com.assel.backendassignment.product.service.ProductService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.persistence.EntityExistsException;
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.Optional;
 
@@ -48,7 +50,9 @@ public class ProductsController {
         Product product;
         try {
             productDTO.setId(id);
-            product = productService.save(productDTO);
+            product = productService.saveUpdate(productDTO);
+        } catch (EntityNotFoundException e) {
+            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, e.getMessage());
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, String.format("Error while saving the product: %s", e.getMessage()));
         }
@@ -60,7 +64,9 @@ public class ProductsController {
     public ResponseEntity<Product> postProduct(@RequestBody ProductDTO productDTO) {
         Product product;
         try {
-            product = productService.save(productDTO);
+            product = productService.saveInsert(productDTO);
+        } catch (EntityExistsException e) {
+            throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, e.getMessage());
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, String.format("Error while saving the product: %s", e.getMessage()));
         }

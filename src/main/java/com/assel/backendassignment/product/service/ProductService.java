@@ -1,7 +1,7 @@
 package com.assel.backendassignment.product.service;
 
 import com.assel.backendassignment.product.dto.ProductDTO;
-import com.assel.backendassignment.product.model.Product;
+import com.assel.backendassignment.product.entity.Product;
 
 import java.util.List;
 import java.util.Optional;
@@ -19,12 +19,25 @@ public interface ProductService {
     List<Product> findAll();
 
     /**
+     * Deletes all products
+     */
+    void deleteAll();
+
+    /**
      * Persists a product
      *
      * @param product the product
      * @return the persisted product
      */
-    Product save(ProductDTO product);
+    Product saveInsert(ProductDTO product);
+
+    /**
+     * Persists a product
+     *
+     * @param product the product
+     * @return the persisted product
+     */
+    Product saveUpdate(ProductDTO product);
 
     /**
      * Retrieves a product

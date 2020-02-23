@@ -1,7 +1,7 @@
 package com.assel.backendassignment.product.controller;
 
 import com.assel.backendassignment.product.dto.ProductDTO;
-import com.assel.backendassignment.product.model.Product;
+import com.assel.backendassignment.product.entity.Product;
 import com.assel.backendassignment.product.service.ProductServiceImpl;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.runner.RunWith;
@@ -103,7 +103,7 @@ class ProductsControllerTest {
 
         product1.setName("name 2");
 
-        given(productService.save(Mockito.any(ProductDTO.class)))
+        given(productService.saveUpdate(Mockito.any(ProductDTO.class)))
                 .willReturn(product1);
 
         mvc.perform(MockMvcRequestBuilders.put("/api/products/1")
@@ -124,7 +124,7 @@ class ProductsControllerTest {
         product1.setCurrentPrice("123.456");
         product1.setLastUpdate(Instant.now().toString());
 
-        given(productService.save(Mockito.any(ProductDTO.class)))
+        given(productService.saveInsert(Mockito.any(ProductDTO.class)))
                 .willReturn(product1);
 
         mvc.perform(MockMvcRequestBuilders.post("/api/products")
